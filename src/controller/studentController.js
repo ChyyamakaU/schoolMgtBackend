@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 const students = require("../../database/students");
-const classes = require("../../database/classes");
+const classes = require("../../database/class");
 
 const createStudent = (req, res, next) => {
     try {

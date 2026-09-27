@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const classes = require("../../database/classes");
+const classes = require("../../database/class");
 
 const createClass = (req, res, next) => {
     try {

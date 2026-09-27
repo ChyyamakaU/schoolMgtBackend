@@ -7,7 +7,7 @@ const {
 const authenticate = require("../middleware/authenticate");
 const authorise = require("../middleware/authorise");
 
-const studentValidator = require("../validator/studentValidator");
+const studentValidator = require("../validators/studentValidator");
 
 const router = express.Router();
 
@@ -17,7 +17,7 @@ router.post("/", authenticate, authorise("admin"), studentValidator, createStude
 // View all students - Admin and Teacher
 router.get("/", authenticate, authorise("admin", "teacher"), getStudents);
 
-// View one student - Admin, Teacher, or the Student themselves
+// View one student - Admin, Teacher, or the Student
 router.get("/:id", authenticate, authorise("admin", "teacher", "student"),  getStudentById );
 
 // Update - Admin
