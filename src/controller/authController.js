@@ -1,7 +1,8 @@
+/* eslint-disable no-undef */
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const users = require("../../database/users");
+const users = require("../../database/user");
 
 const registerNew = async (req, res, next) => {
 try {
@@ -41,7 +42,7 @@ const { fullName, email, phone, password, role } = req.body;
 } catch (error) {
     next(error);
 }
-```
+
 
 };
 
@@ -49,7 +50,7 @@ const loginUser = async (req, res, next) => {
 try {
 const { email, password } = req.body;
 
-```
+
     const existingUser = users.find(
         (user) => user.email === email
     );
