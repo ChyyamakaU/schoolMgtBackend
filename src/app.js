@@ -22,7 +22,7 @@ app.use("/api/teacher", teacherRouter);
 app.use("/app/subject", subjectRouter)
 app.use("/api/result", result)
 
-app.use("/error", error);
+app.use( error);
 app.use("/logger", logger);
 
 
