@@ -2,55 +2,60 @@
 const express = require("express");
 
 const {
-    createClass,
-    getClasses,
-    getClassById,
-    updateClass,
-    deleteClass
-} = require("../controller/classController");
+    createSubject,
+    getSubjects,
+    getSubjectById,
+    updateSubject,
+    deleteSubject
+} = require("../controller/subjectController");
 
 const authenticate = require("../middleware/authenticate");
 const authorise = require("../middleware/authorise");
 
-const classValidator = require("../validators/class Validators");
+const subjectValidator = require("../validators/subjectValidator");
 
 const router = express.Router();
 
+// Admin: create subject
 router.post(
     "/",
     authenticate,
     authorise("admin"),
-    classValidator,
-    createClass
+    subjectValidator,
+    createSubject
 );
 
+// Admin, teacher, student: view subjects
 router.get(
     "/",
     authenticate,
     authorise("admin", "teacher", "student"),
-    getClasses
+    getSubjects
 );
 
+// Admin, teacher, student: view one subject
 router.get(
     "/:id",
     authenticate,
     authorise("admin", "teacher", "student"),
-    getClassById
+    getSubjectById
 );
 
+// Admin: update 
 router.put(
     "/:id",
     authenticate,
     authorise("admin"),
-    classValidator,
-    updateClass
+    subjectValidator,
+    updateSubject
 );
 
+// Admin: delete 
 router.delete(
     "/:id",
     authenticate,
     authorise("admin"),
-    deleteClass
+    deleteSubject
 );
 
 module.exports = router;

@@ -1,56 +1,60 @@
-/* eslint-disable no-undef */
 const express = require("express");
 
 const {
-    createClass,
-    getClasses,
-    getClassById,
-    updateClass,
-    deleteClass
-} = require("../controller/classController");
+    createResult,
+    getResults,
+    getResultById,
+    updateResult,
+    deleteResult
+} = require("../controller/resultController");
 
 const authenticate = require("../middleware/authenticate");
 const authorise = require("../middleware/authorise");
 
-const classValidator = require("../validators/class Validators");
+const resultValidator = require("../validator/resultValidator");
 
 const router = express.Router();
 
+// Admin and teacher can create results
 router.post(
     "/",
     authenticate,
-    authorise("admin"),
-    classValidator,
-    createClass
+    authorise("admin", "teacher"),
+    resultValidator,
+    createResult
 );
 
+// Admin, teacher and student can view results
 router.get(
     "/",
     authenticate,
     authorise("admin", "teacher", "student"),
-    getClasses
+    getResults
 );
+
 
 router.get(
     "/:id",
     authenticate,
     authorise("admin", "teacher", "student"),
-    getClassById
+    getResultById
 );
 
+// Admin and teacher can update results
 router.put(
     "/:id",
     authenticate,
-    authorise("admin"),
-    classValidator,
-    updateClass
+    authorise("admin", "teacher"),
+    resultValidator,
+    updateResult
 );
 
+// Admin only can delete 
 router.delete(
     "/:id",
     authenticate,
     authorise("admin"),
-    deleteClass
+    deleteResult
 );
 
 module.exports = router;
