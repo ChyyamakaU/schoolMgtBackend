@@ -8,6 +8,9 @@ const teacherRouter = require("./routes/classRoute")
 const subjectRouter = require("./routes/subjectRoute")
 const result = require("./routes/resultRoue")
 
+const error =require("./middleware/error")
+const logger = require ("./middleware/logger")
+
 const app = express();
 
 app.use(express.json());
@@ -18,6 +21,9 @@ app.use("/api/class", classRouter);
 app.use("/api/teacher", teacherRouter);
 app.use("/app/subject", subjectRouter)
 app.use("/api/result", result)
+
+app.use("/error", error);
+app.use("/logger", logger);
 
 
 
