@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const subjects = require("../../database/subjects");
+const subjects = require("../../database/subject");
 
 const createSubject = (req, res, next) => {
     try {

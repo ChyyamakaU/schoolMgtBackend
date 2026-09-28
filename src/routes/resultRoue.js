@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const express = require("express");
 
 const {
@@ -11,7 +12,7 @@ const {
 const authenticate = require("../middleware/authenticate");
 const authorise = require("../middleware/authorise");
 
-const resultValidator = require("../validator/resultValidator");
+const resultValidator = require("../validators/resultValidator");
 
 const router = express.Router();
 

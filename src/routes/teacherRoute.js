@@ -12,7 +12,7 @@ const {
 const authenticate = require("../middleware/authenticate");
 const authorise = require("../middleware/authorise");
 
-const teacherValidator = require("../validator/teacherValidator");
+const teacherValidator = require("../validators/teacherValidator");
 
 const router = express.Router();
 

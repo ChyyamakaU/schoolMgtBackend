@@ -2,9 +2,6 @@
 const { body } = require("express-validator");
 
 const registerValidator = [
-
-
-    
     body("fullName")
         .trim()
         .notEmpty()
@@ -22,7 +19,11 @@ const registerValidator = [
 
     body("password")
         .isLength({ min: 6 })
-        .withMessage("Password must be at least 6 characters long")
+        .withMessage("Password must be at least 6 characters long"),
+
+    body("role")
+        .isIn(["admin", "teacher", "student"])
+        .withMessage("Role must be admin, teacher, or student")
 ];
 
 const loginValidator = [

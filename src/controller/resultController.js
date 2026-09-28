@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-const results = require("../../database/results");
+const results = require("../../database/result");
 const students = require("../../database/students");
-const subjects = require("../../database/subjects");
+const subjects = require("../../database/subject");
 
 const createResult = (req, res, next) => {
     try {
